@@ -97,6 +97,6 @@ switch ($choice)
         exit;
 
     default:
-        echo "Enter number is outside of range (1-4)." . PHP_EOL;
+        echo "Entered number is outside of range (1-4)." . PHP_EOL;
         break;
 }
