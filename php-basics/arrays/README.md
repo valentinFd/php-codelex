@@ -2,15 +2,15 @@
 
 ## Exercise #1
 
-See [exercise-1.php](./exercise-1.php)
+See [exercise-1.php](https://github.com/codelex-io/php-syllabus/blob/main/php-basics/arrays/exercise-1.php)
 
 ## Exercise #2
 
-See [exercise-2.php](./exercise-2.php)
+See [exercise-2.php](https://github.com/codelex-io/php-syllabus/blob/main/php-basics/arrays/exercise-2.php)
 
 ## Exercise #3
 
-See [exercise-3.php](./exercise-3.php)
+See [exercise-3.php](https://github.com/codelex-io/php-syllabus/blob/main/php-basics/arrays/exercise-3.php)
 
 ## Exercise #4
 
@@ -33,7 +33,7 @@ Array 2: 45 87 39 32 93 86 12 44 75 50
 
 ## Exercise #5
 
-See [tic-tac-toe.php](./tic-tac-toe.php)
+See [tic-tac-toe.php](https://github.com/codelex-io/php-syllabus/blob/main/php-basics/arrays/tic-tac-toe.php)
 
 Code an interactive, two-player game of Tic-Tac-Toe. You'll use a two-dimensional array of chars.
 
