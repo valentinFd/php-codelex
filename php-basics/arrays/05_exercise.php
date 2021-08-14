@@ -121,12 +121,12 @@ class TicTacToe
         return false;
     }
 
-    private function player1TargetScore()
+    private function player1TargetScore(): int
     {
         return self::PLAYER1_POINT * self::GRID_SIZE;
     }
 
-    private function player2TargetScore()
+    private function player2TargetScore(): int
     {
         return self::PLAYER2_POINT * self::GRID_SIZE;
     }
