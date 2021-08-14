@@ -2,15 +2,15 @@
 
 class TicTacToe
 {
-    const PLAYER1 = "X";
-    const PLAYER1_POINT = 1;
+    private const PLAYER1 = "X";
+    private const PLAYER1_POINT = 1;
 
-    const PLAYER2 = "O";
-    const PLAYER2_POINT = -1;
+    private const PLAYER2 = "O";
+    private const PLAYER2_POINT = -1;
 
-    const GRID_SIZE = 3;
+    private const GRID_SIZE = 3;
 
-    const BLANK = "";
+    private const BLANK = "";
 
     private string $currentPlayer;
 
