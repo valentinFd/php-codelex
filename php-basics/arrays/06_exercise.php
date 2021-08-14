@@ -18,7 +18,7 @@ class Hangman
 
     private int $gameStatus;
 
-    public function __constructor()
+    private function __constructor()
     {
         $index = rand(0, count(self::WORDS) - 1);
         $this->word = str_split(self::WORDS[$index]);
@@ -29,7 +29,7 @@ class Hangman
         $this->gameStatus = 1;
     }
 
-    public function makeMove(string $guess)
+    private function makeMove(string $guess)
     {
         $key = array_search($guess, $this->wordCopy);
         if ($key !== false)
@@ -41,7 +41,7 @@ class Hangman
         $this->movesLeft--;
     }
 
-    public function updateGameStatus()
+    private function updateGameStatus()
     {
         if (!$this->movesLeft)
         {
