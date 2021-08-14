@@ -14,6 +14,15 @@ class Hangman
 
     private int $movesLeft;
 
+    public function __constructor()
+    {
+        $index = rand(0, count(self::WORDS) - 1);
+        $this->word = str_split(self::WORDS[$index]);
+        $this->wordCopy = $this->word;
+        $this->showCharacter = array_fill(0, count($this->word), 0);
+        $this->movesLeft = 20;
+    }
+
     public function makeMove(string $guess)
     {
         $key = array_search($guess, $this->wordCopy);
@@ -29,11 +38,7 @@ class Hangman
     {
         do
         {
-            $index = rand(0, count(self::WORDS) - 1);
-            $this->word = str_split(self::WORDS[$index]);
-            $this->wordCopy = $this->word;
-            $this->showCharacter = array_fill(0, count($this->word), 0);
-            $this->movesLeft = 20;
+            self::__constructor();
             $gameEnd = false;
             $this->displayWord();
             while (!$gameEnd)
