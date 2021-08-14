@@ -34,7 +34,7 @@ class TicTacToe
         $this->winner = null;
     }
 
-    public function displayGrid()
+    private function displayGrid()
     {
         for ($i = 0; $i < self::GRID_SIZE; $i++)
         {
