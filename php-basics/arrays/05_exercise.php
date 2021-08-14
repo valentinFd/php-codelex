@@ -63,11 +63,6 @@ class TicTacToe
         $this->display(PHP_EOL);
     }
 
-    public function getWinner(): ?string
-    {
-        return $this->winner;
-    }
-
     private function makeMove(int $row, int $col)
     {
         $this->grid[$row][$col] = $this->currentPlayer;
