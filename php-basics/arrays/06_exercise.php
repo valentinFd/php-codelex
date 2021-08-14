@@ -4,6 +4,8 @@ class Hangman
 {
     private const WORDS = ["apple", "computer", "window", "keyboard", "repository", "refrigerator"];
 
+    private const BLANK = "";
+
     private array $word;
 
     private array $wordCopy;
@@ -18,7 +20,7 @@ class Hangman
         if ($key !== false)
         {
             $this->showCharacter[$key] = 1;
-            $this->wordCopy[$key] = '';
+            $this->wordCopy[$key] = self::BLANK;
         }
         $this->movesLeft--;
     }
@@ -47,7 +49,7 @@ class Hangman
                 $this->makeMove($guess);
                 $this->displayWord();
                 $countEmpty = array_count_values($this->wordCopy);
-                if (isset($countEmpty['']) && $countEmpty[''] === count($this->word))
+                if (isset($countEmpty[self::BLANK]) && $countEmpty[self::BLANK] === count($this->word))
                 {
                     $this->display("YOU GOT IT!" . PHP_EOL);
                     $gameEnd = true;
