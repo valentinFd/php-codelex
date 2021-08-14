@@ -14,6 +14,10 @@ class Hangman
 
     private int $movesLeft;
 
+    private int $movesToGuess;
+
+    private int $gameStatus;
+
     public function __constructor()
     {
         $index = rand(0, count(self::WORDS) - 1);
@@ -21,6 +25,8 @@ class Hangman
         $this->wordCopy = $this->word;
         $this->showCharacter = array_fill(0, count($this->word), 0);
         $this->movesLeft = 20;
+        $this->movesToGuess = count($this->word);
+        $this->gameStatus = 1;
     }
 
     public function makeMove(string $guess)
@@ -30,8 +36,35 @@ class Hangman
         {
             $this->showCharacter[$key] = 1;
             $this->wordCopy[$key] = self::BLANK;
+            $this->movesToGuess--;
         }
         $this->movesLeft--;
+    }
+
+    public function updateGameStatus()
+    {
+        if (!$this->movesLeft)
+        {
+            $this->gameStatus = 0;
+        }
+        if (!$this->movesToGuess)
+        {
+            $this->gameStatus = 2;
+        }
+    }
+
+    private function moveEndMessage(): string
+    {
+        switch ($this->gameStatus)
+        {
+            case 0:
+                return ("Game over. You have no moves left." . PHP_EOL);
+            case 1:
+                return ("You have $this->movesLeft moves left." . PHP_EOL);
+            case 2:
+                return ("YOU GOT IT!" . PHP_EOL);
+        }
+        return "";
     }
 
     public function startGame()
@@ -39,9 +72,8 @@ class Hangman
         do
         {
             self::__constructor();
-            $gameEnd = false;
             $this->displayWord();
-            while (!$gameEnd)
+            while ($this->gameStatus === 1)
             {
                 do
                 {
@@ -53,21 +85,8 @@ class Hangman
                 } while (!$this->isValid($guess));
                 $this->makeMove($guess);
                 $this->displayWord();
-                $countEmpty = array_count_values($this->wordCopy);
-                if (isset($countEmpty[self::BLANK]) && $countEmpty[self::BLANK] === count($this->word))
-                {
-                    $this->display("YOU GOT IT!" . PHP_EOL);
-                    $gameEnd = true;
-                }
-                else if (!$this->movesLeft)
-                {
-                    $this->display("Game over. You have no moves left." . PHP_EOL);
-                    $gameEnd = true;
-                }
-                if (!$gameEnd)
-                {
-                    $this->display("You have $this->movesLeft moves left." . PHP_EOL);
-                }
+                $this->updateGameStatus();
+                $this->display($this->moveEndMessage());
             }
             $repeat = readline("Type \"again\" to play again. ");
         } while ($repeat === "again");
