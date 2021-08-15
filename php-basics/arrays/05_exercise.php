@@ -20,8 +20,6 @@ class TicTacToe
 
     private int $movesLeft;
 
-    private ?string $winner;
-
     public function __construct()
     {
         $this->grid = [];
@@ -31,7 +29,6 @@ class TicTacToe
         }
         $this->score = array_fill(0, 2 * self::GRID_SIZE + 2, 0);
         $this->movesLeft = self::GRID_SIZE * self::GRID_SIZE;
-        $this->winner = null;
     }
 
     private function displayGrid()
@@ -77,9 +74,27 @@ class TicTacToe
         {
             $this->score[self::GRID_SIZE * 2 + 1] += $point;
         }
-        if (in_array($this->player1TargetScore(), $this->score)) $this->winner = self::PLAYER1;
-        if (in_array($this->player2TargetScore(), $this->score)) $this->winner = self::PLAYER2;
         $this->movesLeft--;
+    }
+
+    private function checkScore(): bool
+    {
+        if (in_array($this->player1TargetScore(), $this->score))
+        {
+            $this->display("'" . self::PLAYER1 . "' won." . PHP_EOL);
+            return true;
+        }
+        if (in_array($this->player2TargetScore(), $this->score))
+        {
+            $this->display("'" . self::PLAYER2 . "' won." . PHP_EOL);
+            return true;
+        }
+        if (!$this->movesLeft)
+        {
+            $this->display("The game is a tie." . PHP_EOL);
+            return true;
+        }
+        return false;
     }
 
     public function startGame()
@@ -102,16 +117,7 @@ class TicTacToe
             $this->makeMove($row, $col);
             $this->displayGrid();
             $this->currentPlayer === self::PLAYER1 ? $this->currentPlayer = self::PLAYER2 : $this->currentPlayer = self::PLAYER1;
-            if ($this->winner)
-            {
-                $this->display("$this->winner won." . PHP_EOL);
-                $done = true;
-            }
-            else if (!$this->movesLeft)
-            {
-                $this->display("The game is a tie." . PHP_EOL);
-                $done = true;
-            }
+            $done = $this->checkScore();
         }
     }
 
