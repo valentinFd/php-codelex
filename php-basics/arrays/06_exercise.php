@@ -18,7 +18,7 @@ class Hangman
 
     private int $gameStatus;
 
-    private function __constructor()
+    public function __construct()
     {
         $index = rand(0, count(self::WORDS) - 1);
         $this->word = str_split(self::WORDS[$index]);
@@ -71,7 +71,7 @@ class Hangman
     {
         do
         {
-            self::__constructor();
+            self::__construct();
             $this->displayWord();
             while ($this->gameStatus === 1)
             {
