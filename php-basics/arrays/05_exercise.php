@@ -123,7 +123,7 @@ class TicTacToe
 
     private function isValidMove(int $row, int $col): bool
     {
-        if ($row >= 0 && $row <= self::GRID_SIZE && $col >= 0 && $col <= self::GRID_SIZE && $this->grid[$row][$col] === self::BLANK) return true;
+        if ($row >= 0 && $row < self::GRID_SIZE && $col >= 0 && $col < self::GRID_SIZE && $this->grid[$row][$col] === self::BLANK) return true;
         return false;
     }
 
