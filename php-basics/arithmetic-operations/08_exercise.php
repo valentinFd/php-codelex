@@ -9,15 +9,16 @@ function totalPay(stdClass $employee): float
 {
     if (!($employee->basePay < MIN_BASE_PAY || $employee->hours > MAX_HOURS))
     {
+        $baseHours = $employee->hours;
         $extraHours = 0;
 
         if ($employee->hours > MAX_HOURS_BEFORE_EXTRA)
         {
             $extraHours = $employee->hours - MAX_HOURS_BEFORE_EXTRA;
-            $employee->hours -= $extraHours;
+            $baseHours -= $extraHours;
         }
 
-        return $employee->basePay * $employee->hours + $employee->basePay * EXTRA_HOURS_PAY_MULTIPLIER * $extraHours;
+        return $employee->basePay * $baseHours + $employee->basePay * EXTRA_HOURS_PAY_MULTIPLIER * $extraHours;
     }
     return -1;
 }
