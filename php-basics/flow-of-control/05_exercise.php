@@ -12,46 +12,82 @@ foreach ($stringArray as $char)
     switch ($char)
     {
         case "a":
-        case "b":
-        case "c":
             $result .= "2";
             break;
+        case "b":
+            $result .= "22";
+            break;
+        case "c":
+            $result .= "222";
+            break;
         case "d":
-        case "e":
-        case "f":
             $result .= "3";
             break;
+        case "e":
+            $result .= "33";
+            break;
+        case "f":
+            $result .= "333";
+            break;
         case "g":
-        case "h":
-        case "i":
             $result .= "4";
             break;
+        case "h":
+            $result .= "44";
+            break;
+        case "i":
+            $result .= "444";
+            break;
         case "j":
-        case "k":
-        case "l":
             $result .= "5";
             break;
+        case "k":
+            $result .= "55";
+            break;
+        case "l":
+            $result .= "555";
+            break;
         case "m":
-        case "n":
-        case "o":
             $result .= "6";
             break;
+        case "n":
+            $result .= "66";
+            break;
+        case "o":
+            $result .= "666";
+            break;
         case "p":
-        case "q":
-        case "r":
-        case "s":
             $result .= "7";
             break;
+        case "q":
+            $result .= "77";
+            break;
+        case "r":
+            $result .= "777";
+            break;
+        case "s":
+            $result .= "7777";
+            break;
         case "t":
-        case "u":
-        case "v":
             $result .= "8";
             break;
+        case "u":
+            $result .= "88";
+            break;
+        case "v":
+            $result .= "888";
+            break;
         case "w":
-        case "x":
-        case "y":
-        case "z":
             $result .= "9";
+            break;
+        case "x":
+            $result .= "99";
+            break;
+        case "y":
+            $result .= "999";
+            break;
+        case "z":
+            $result .= "9999";
             break;
     }
 }
