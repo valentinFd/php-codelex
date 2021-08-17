@@ -12,7 +12,7 @@ function totalPay(stdClass $employee): float
         $baseHours = $employee->hours;
         $extraHours = 0;
 
-        if ($employee->hours > MAX_HOURS_BEFORE_EXTRA)
+        if ($baseHours > MAX_HOURS_BEFORE_EXTRA)
         {
             $extraHours = $employee->hours - MAX_HOURS_BEFORE_EXTRA;
             $baseHours -= $extraHours;
