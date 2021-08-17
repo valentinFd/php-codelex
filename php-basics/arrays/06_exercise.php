@@ -25,7 +25,6 @@ class Hangman
         $this->wordCopy = $this->word;
         $this->showCharacter = array_fill(0, count($this->word), 0);
         $this->movesLeft = 20;
-        $this->movesToGuess = count($this->word);
         $this->gameStatus = 1;
     }
 
@@ -36,7 +35,6 @@ class Hangman
         {
             $this->showCharacter[$key] = 1;
             $this->wordCopy[$key] = self::BLANK;
-            $this->movesToGuess--;
         }
         $this->movesLeft--;
     }
@@ -47,7 +45,7 @@ class Hangman
         {
             $this->gameStatus = 0;
         }
-        if (!$this->movesToGuess)
+        if (isset(array_count_values($this->showCharacter)[1]) && array_count_values($this->showCharacter)[1] === count($this->word))
         {
             $this->gameStatus = 2;
         }
