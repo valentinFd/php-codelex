@@ -5,29 +5,44 @@ const MIN_BASE_PAY = 8.00;
 const EXTRA_HOURS_PAY_MULTIPLIER = 1.5;
 const MAX_HOURS_BEFORE_EXTRA = 40;
 
-function totalPay(float $basePay, int $hours): string
+function totalPay(stdClass $employee): float
 {
-    if (!($basePay < MIN_BASE_PAY || $hours > MAX_HOURS))
+    if (!($employee->basePay < MIN_BASE_PAY || $employee->hours > MAX_HOURS))
     {
         $extraHours = 0;
 
-        if ($hours > MAX_HOURS_BEFORE_EXTRA)
+        if ($employee->hours > MAX_HOURS_BEFORE_EXTRA)
         {
-            $extraHours = $hours - MAX_HOURS_BEFORE_EXTRA;
-            $hours -= $extraHours;
+            $extraHours = $employee->hours - MAX_HOURS_BEFORE_EXTRA;
+            $employee->hours -= $extraHours;
         }
 
-        $totalPay = $basePay * $hours + $basePay * EXTRA_HOURS_PAY_MULTIPLIER * $extraHours . PHP_EOL;
-        return "Total pay: " . $totalPay;
+        return $employee->basePay * $employee->hours + $employee->basePay * EXTRA_HOURS_PAY_MULTIPLIER * $extraHours;
     }
-
-    $error = "";
-    if ($basePay < 8) $error .= "Employee cannot have a base pay of less than $8.00." . PHP_EOL;
-    if ($hours > 60) $error .= "Employee cannot work more than 60 hours a week." . PHP_EOL;
-    return $error;
+    return -1;
 }
 
-$basePay = (float)readline("Enter base pay: ");
-$hours = (int)readline("Enter hours: ");
+function main()
+{
+    $employee1 = new stdClass();
+    $employee1->basePay = 7.50;
+    $employee1->hours = 35;
 
-echo totalPay($basePay, $hours);
+    $employee2 = new stdClass();
+    $employee2->basePay = 8.20;
+    $employee2->hours = 47;
+
+    $employee3 = new stdClass();
+    $employee3->basePay = 10.00;
+    $employee3->hours = 73;
+
+    $employees = [$employee1, $employee2, $employee3];
+
+    foreach ($employees as $employee)
+    {
+        if (totalPay($employee) < 0) echo "Invalid input." . PHP_EOL;
+        else echo "Total pay: " . totalPay($employee) . "$" . PHP_EOL;
+    }
+}
+
+main();
