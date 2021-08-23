@@ -4,25 +4,25 @@ $dayNumber = (int)readline("Enter a day number: ");
 switch ($dayNumber)
 {
     case 0:
-        echo "Monday";
+        echo "Sunday";
         break;
     case 1:
-        echo "Tuesday";
+        echo "Monday";
         break;
     case 2:
-        echo "Wednesday";
+        echo "Tuesday";
         break;
     case 3:
-        echo "Thursday";
+        echo "Wednesday";
         break;
     case 4:
-        echo "Friday";
+        echo "Thursday";
         break;
     case 5:
-        echo "Saturday";
+        echo "Friday";
         break;
     case 6:
-        echo "Sunday";
+        echo "Saturday";
         break;
     default:
         echo "Not a valid day";
