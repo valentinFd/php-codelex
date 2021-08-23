@@ -2,7 +2,6 @@
 
 class FizzBuzz
 {
-
     public function start()
     {
         $number = (int)readline("Enter a number: ");
