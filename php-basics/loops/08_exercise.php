@@ -17,7 +17,7 @@ class NumberSquare
             {
                 $row .= $j;
             }
-            for ($k = 1; $k < $i; $k++)
+            for ($k = $this->min; $k < $i; $k++)
             {
                 $row .= $k;
             }
