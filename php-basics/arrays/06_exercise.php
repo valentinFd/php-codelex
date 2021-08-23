@@ -6,26 +6,30 @@ class Hangman
 
     private const BLANK = "";
 
-    private array $word;
+    private string $word;
 
     private array $wordCopy;
 
     private array $showCharacter;
 
-    private int $movesLeft;
+    private int $triesLeft;
 
     private int $movesToGuess;
 
     private int $gameStatus;
 
+    private bool $showTries;
+
     public function __construct()
     {
         $index = rand(0, count(self::WORDS) - 1);
-        $this->word = str_split(self::WORDS[$index]);
-        $this->wordCopy = $this->word;
-        $this->showCharacter = array_fill(0, count($this->word), 0);
-        $this->movesLeft = 20;
+        $this->word = self::WORDS[$index];
+        $this->wordCopy = str_split($this->word);
+        $this->showCharacter = array_fill(0, strlen($this->word), 0);
+        $this->triesLeft = 15;
+        $this->movesToGuess = strlen($this->word);
         $this->gameStatus = 1;
+        $this->showTries = false;
     }
 
     private function makeMove(string $guess)
@@ -35,17 +39,22 @@ class Hangman
         {
             $this->showCharacter[$key] = 1;
             $this->wordCopy[$key] = self::BLANK;
+            $this->movesToGuess--;
         }
-        $this->movesLeft--;
+        else
+        {
+            $this->triesLeft--;
+            $this->showTries = true;
+        }
     }
 
     private function updateGameStatus()
     {
-        if (!$this->movesLeft)
+        if (!$this->triesLeft)
         {
             $this->gameStatus = 0;
         }
-        if (isset(array_count_values($this->showCharacter)[1]) && array_count_values($this->showCharacter)[1] === count($this->word))
+        if (!$this->movesToGuess)
         {
             $this->gameStatus = 2;
         }
@@ -56,11 +65,19 @@ class Hangman
         switch ($this->gameStatus)
         {
             case 0:
-                return ("Game over. You have no moves left." . PHP_EOL);
+                return "Game over. You have no tries left." . PHP_EOL . "Correct answer: $this->word" . PHP_EOL;
             case 1:
-                return ("You have $this->movesLeft moves left." . PHP_EOL);
+                if ($this->showTries)
+                {
+                    $this->showTries = false;
+                    $tries = "tries";
+                    // if number of tries ends with 1 and is not 11 then write "try" else write "tries"
+                    if ($this->triesLeft % 10 === 1 && $this->triesLeft !== 11) $tries = "try";
+                    return "Wrong. You have $this->triesLeft $tries left." . PHP_EOL;
+                }
+                return "";
             case 2:
-                return ("YOU GOT IT!" . PHP_EOL);
+                return "YOU GOT IT!" . PHP_EOL;
         }
         return "";
     }
@@ -71,6 +88,7 @@ class Hangman
         {
             self::__construct();
             $this->displayWord();
+            $this->display("You have $this->triesLeft tries left." . PHP_EOL);
             while ($this->gameStatus === 1)
             {
                 do
@@ -97,13 +115,14 @@ class Hangman
 
     private function displayWord()
     {
+        $wordArray = str_split($this->word);
         $this->display(PHP_EOL . "-=-=-=-=-=-=-=-=-=-=-=-=-=-" . PHP_EOL . PHP_EOL);
         $this->display("Word:    ");
-        for ($i = 0; $i < count($this->word); $i++)
+        for ($i = 0; $i < strlen($this->word); $i++)
         {
             if ($this->showCharacter[$i])
             {
-                $this->display("{$this->word[$i]} ");
+                $this->display("{$wordArray[$i]} ");
             }
             else
             {
