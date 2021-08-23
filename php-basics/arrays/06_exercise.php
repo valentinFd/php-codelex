@@ -29,7 +29,7 @@ class Hangman
         $this->triesLeft = 15;
         $this->movesToGuess = strlen($this->word);
         $this->gameStatus = 1;
-        $this->showTries = false;
+        $this->showTries = true;
     }
 
     private function makeMove(string $guess)
@@ -60,6 +60,19 @@ class Hangman
         }
     }
 
+    private function displayTries(): string
+    {
+        if ($this->showTries)
+        {
+            $this->showTries = false;
+            $tries = "tries";
+            // if the number of tries ends with 1 (not 11) then write "try" else write "tries"
+            if ($this->triesLeft % 10 === 1 && $this->triesLeft % 100 !== 11) $tries = "try";
+            return "You have $this->triesLeft $tries left." . PHP_EOL;
+        }
+        return "";
+    }
+
     private function moveEndMessage(): string
     {
         switch ($this->gameStatus)
@@ -67,15 +80,7 @@ class Hangman
             case 0:
                 return "Game over. You have no tries left." . PHP_EOL . "Correct answer: $this->word" . PHP_EOL;
             case 1:
-                if ($this->showTries)
-                {
-                    $this->showTries = false;
-                    $tries = "tries";
-                    // if the number of tries ends with 1 (not 11) then write "try" else write "tries"
-                    if ($this->triesLeft % 10 === 1 && $this->triesLeft % 100 !== 11) $tries = "try";
-                    return "Wrong. You have $this->triesLeft $tries left." . PHP_EOL;
-                }
-                return "";
+                return $this->displayTries();
             case 2:
                 return "YOU GOT IT!" . PHP_EOL;
         }
@@ -88,7 +93,7 @@ class Hangman
         {
             self::__construct();
             $this->displayWord();
-            $this->display("You have $this->triesLeft tries left." . PHP_EOL);
+            $this->display($this->displayTries());
             while ($this->gameStatus === 1)
             {
                 do
