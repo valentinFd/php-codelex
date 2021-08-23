@@ -128,8 +128,7 @@ class TicTacToe
 
     private function isValidMove(string $row, string $col): bool
     {
-        if (is_numeric($row) && is_numeric($col) && $row >= 0 && $row < self::GRID_SIZE && $col >= 0 && $col < self::GRID_SIZE && $this->grid[$row][$col] === self::BLANK) return true;
-        return false;
+        return (is_numeric($row) && is_numeric($col) && $row >= 0 && $row < self::GRID_SIZE && $col >= 0 && $col < self::GRID_SIZE && $this->grid[$row][$col] === self::BLANK);
     }
 
     private function player1TargetScore(): int
