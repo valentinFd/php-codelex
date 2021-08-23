@@ -63,7 +63,7 @@ class TicTacToe
     private function makeMove(int $row, int $col)
     {
         $this->grid[$row][$col] = $this->currentPlayer;
-        $this->currentPlayer === self::PLAYER1 ? $point = self::PLAYER1_POINT : $point = self::PLAYER2_POINT;
+        $point = $this->currentPlayer === self::PLAYER1 ? self::PLAYER1_POINT : self::PLAYER2_POINT;
         $this->score[$row] += $point;
         $this->score[self::GRID_SIZE + $col] += $point;
         if ($row === $col)
