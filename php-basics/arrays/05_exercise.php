@@ -107,11 +107,16 @@ class TicTacToe
             $this->display("'$this->currentPlayer', choose your location." . PHP_EOL);
             do
             {
-                $row = (int)readline("Row: ");
-                $col = (int)readline("Col: ");
+                $row = readline("Row: ");
+                $col = readline("Col: ");
                 if (!$this->isValidMove($row, $col))
                 {
                     $this->display("Invalid input." . PHP_EOL);
+                }
+                else
+                {
+                    $row = (int)$row;
+                    $col = (int)$col;
                 }
             } while (!$this->isValidMove($row, $col));
             $this->makeMove($row, $col);
@@ -121,9 +126,9 @@ class TicTacToe
         }
     }
 
-    private function isValidMove(int $row, int $col): bool
+    private function isValidMove(string $row, string $col): bool
     {
-        if ($row >= 0 && $row < self::GRID_SIZE && $col >= 0 && $col < self::GRID_SIZE && $this->grid[$row][$col] === self::BLANK) return true;
+        if (is_numeric($row) && is_numeric($col) && $row >= 0 && $row < self::GRID_SIZE && $col >= 0 && $col < self::GRID_SIZE && $this->grid[$row][$col] === self::BLANK) return true;
         return false;
     }
 
