@@ -71,8 +71,8 @@ class Hangman
                 {
                     $this->showTries = false;
                     $tries = "tries";
-                    // if number of tries ends with 1 and is not 11 then write "try" else write "tries"
-                    if ($this->triesLeft % 10 === 1 && $this->triesLeft !== 11) $tries = "try";
+                    // if the number of tries ends with 1 (not 11) then write "try" else write "tries"
+                    if ($this->triesLeft % 10 === 1 && $this->triesLeft % 100 !== 11) $tries = "try";
                     return "Wrong. You have $this->triesLeft $tries left." . PHP_EOL;
                 }
                 return "";
