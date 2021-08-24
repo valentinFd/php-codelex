@@ -29,12 +29,9 @@ class Odometer
 {
     private int $mileage;
 
-    public FuelGauge $fuelGauge;
-
     public function __construct()
     {
         $this->mileage = 0;
-        $this->fuelGauge = new FuelGauge;
     }
 
     public function getMileage(): int
@@ -46,17 +43,49 @@ class Odometer
     {
         if ($this->mileage === 999999) $this->mileage = 0;
         else $this->mileage++;
-        if ($this->mileage % 10 === 0) $this->fuelGauge->decrementFuel();
     }
 }
 
-$odometer = new Odometer();
-for ($i = 0; $i < 10; $i++)
+class Car
 {
-    $odometer->fuelGauge->incrementFuel();
+    public FuelGauge $fuelGauge;
+
+    public Odometer $odometer;
+
+    public function __construct()
+    {
+        $this->fuelGauge = new FUelGauge();
+        $this->odometer = new Odometer();
+    }
+
+    public function addFuel(int $amount): bool
+    {
+        if ($amount > 0 && $this->fuelGauge->getFuel() + $amount <= 70)
+        {
+            for ($i = 0; $i < $amount; $i++)
+            {
+                $this->fuelGauge->incrementFuel();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function drive(): bool
+    {
+        if ($this->fuelGauge->getFuel() === 0) return false;
+        $this->odometer->incrementMileage();
+        if ($this->odometer->getMileage() % 10 === 0)
+        {
+            $this->fuelGauge->decrementFuel();
+        }
+        return true;
+    }
 }
-while ($odometer->fuelGauge->getFuel() !== 0)
+
+$car = new Car();
+$car->addFuel(10);
+while ($car->drive())
 {
-    $odometer->incrementMileage();
-    echo "Mileage: {$odometer->getMileage()} km. Fuel: {$odometer->fuelGauge->getFuel()} l" . PHP_EOL;
+    echo "Mileage: {$car->odometer->getMileage()} km. Fuel: {$car->fuelGauge->getFuel()} l" . PHP_EOL;
 }
