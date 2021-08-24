@@ -38,7 +38,7 @@ class SavingsAccount
         return true;
     }
 
-    public function roundBalance()
+    private function roundBalance()
     {
         $this->balance = round($this->balance, 2);
     }
