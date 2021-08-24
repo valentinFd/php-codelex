@@ -16,12 +16,12 @@ class FuelGauge
 
     public function incrementFuel()
     {
-        if ($this->fuel < 70) $this->fuel++;
+        $this->fuel++;
     }
 
     public function decrementFuel()
     {
-        if ($this->fuel > 0) $this->fuel--;
+        $this->fuel--;
     }
 }
 
@@ -60,8 +60,9 @@ class Car
 
     public function addFuel(int $amount): bool
     {
-        if ($amount > 0 && $this->fuelGauge->getFuel() + $amount <= 70)
+        if ($amount > 0)
         {
+            if ($amount > 70) $amount = 70;
             for ($i = 0; $i < $amount; $i++)
             {
                 $this->fuelGauge->incrementFuel();
