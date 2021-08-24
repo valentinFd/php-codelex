@@ -65,7 +65,7 @@ class DogTest
 
         echo $coco->fathersName() . PHP_EOL;
         echo $sparky->fathersName() . PHP_EOL;
-        echo $max->hasSameMotherAs($buster) ? "True" : "False";
+        echo $coco->hasSameMotherAs($rocky) ? "True" : "False";
         echo PHP_EOL;
         echo $max->hasSameMotherAs($coco) ? "True" : "False";
         echo PHP_EOL;
