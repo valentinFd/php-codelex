@@ -35,7 +35,7 @@ $product->print();
 $product1 = new Product("iPhone 5s", 999.99, 3);
 $product1->print();
 
-$product2 = new Product("Epson EB-U05", 70.00, 14);
+$product2 = new Product("Epson EB-U05", 440.46, 1);
 $product2->print();
 
 $product->setPrice(40.00);
