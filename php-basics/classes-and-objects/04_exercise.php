@@ -15,14 +15,14 @@ class Movie
         $this->rating = $rating;
     }
 
-    public static function getPG(array $movies)
+    public static function getPG(array $movies): array
     {
         $PGMovies = [];
         foreach ($movies as $movie)
         {
             if ($movie->rating === "PG") $PGMovies[] = $movie;
         }
-        return count($PGMovies) > 0 ? $PGMovies : false;
+        return $PGMovies;
     }
 
     public function __toString(): string
@@ -37,11 +37,8 @@ $movie3 = new Movie("Spider-Man: Into the Spider-Verse", "Columbia Pictures", "P
 
 $movies = [$movie1, $movie2, $movie3];
 
-if (Movie::getPG($movies))
+$PGMovies = Movie::getPG($movies);
+foreach ($PGMovies as $movie)
 {
-    $PGMovies = Movie::getPG($movies);
-    foreach ($PGMovies as $movie)
-    {
-        echo $movie . PHP_EOL;
-    }
+    echo $movie . PHP_EOL;
 }
