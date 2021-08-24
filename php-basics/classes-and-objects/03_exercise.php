@@ -54,7 +54,7 @@ class Car
 
     public function __construct()
     {
-        $this->fuelGauge = new FUelGauge();
+        $this->fuelGauge = new FuelGauge();
         $this->odometer = new Odometer();
     }
 
