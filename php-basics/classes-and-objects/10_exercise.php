@@ -67,6 +67,7 @@ class VideoStore
     {
         if (count($this->inventory) > 0)
         {
+            /** @var Video $video */
             foreach ($this->inventory as $video)
             {
                 $checkedOut = $video->isCheckedOut() ? "Checked out" : "On shelves";
@@ -91,6 +92,7 @@ class VideoStore
 
     public function checkOut(string $title): bool
     {
+        /** @var Video $video */
         foreach ($this->inventory as $video)
         {
             if ($video->getTitle() === $title)
@@ -105,6 +107,7 @@ class VideoStore
 
     public function returnVideo(string $title): bool
     {
+        /** @var Video $video */
         foreach ($this->inventory as $video)
         {
             if ($video->getTitle() === $title)
@@ -122,6 +125,7 @@ class VideoStore
         if ($rating >= 0 && $rating <= 10)
         {
             $rating = round($rating, 1);
+            /** @var Video $video */
             foreach ($this->inventory as $video)
             {
                 if ($video->getTitle() === $title)
@@ -136,6 +140,7 @@ class VideoStore
 
     public function likedPercentage(string $title)
     {
+        /** @var Video $video */
         foreach ($this->inventory as $video)
         {
             if ($video->getTitle() === $title)
