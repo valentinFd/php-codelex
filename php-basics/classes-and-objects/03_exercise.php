@@ -62,7 +62,7 @@ class Car
     {
         if ($amount > 0)
         {
-            if ($amount > 70) $amount = 70;
+            if ($this->fuelGauge->getFuel() + $amount > 70) $amount = 70 - $this->fuelGauge->getFuel();
             for ($i = 0; $i < $amount; $i++)
             {
                 $this->fuelGauge->incrementFuel();
