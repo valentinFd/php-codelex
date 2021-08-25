@@ -156,7 +156,6 @@ class Person
     {
         do
         {
-            $repeat = "y";
             $game = new SlotMachine();
             $game->printMultipliers();
             echo "Current amount of money: $" . $this->cash . PHP_EOL;
@@ -174,13 +173,12 @@ class Person
                 $this->withdrawCash($bet);
                 $this->depositCash($game->startGame($bet));
                 echo "Current amount of money: $" . $this->cash . PHP_EOL;
-                $repeat = readline("Play again? (y) ");
             }
             else
             {
                 echo "Not enough money" . PHP_EOL;
             }
-        } while ($repeat === "y");
+        } while (true);
     }
 
     private function isValidBet(int $bet, array $multiplierCosts): bool
