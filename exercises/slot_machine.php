@@ -167,16 +167,15 @@ class Person
                 {
                     echo "Invalid bet" . PHP_EOL;
                 }
-            } while (!$this->isValidBet($bet, $game->getMultiplierCosts()));
-            if ($this->enoughMoney($bet, $game->getMultiplierCosts()))
+                else if (!$this->hasEnoughMoney($bet))
+                {
+                    echo "Not enough money" . PHP_EOL;
+                }
+            } while (!($this->isValidBet($bet, $game->getMultiplierCosts()) && $this->hasEnoughMoney($bet)));
+            if ($this->hasEnoughMoney($bet))
             {
                 $this->withdrawCash($bet);
                 $this->depositCash($game->startGame($bet));
-                echo "Current amount of money: $" . $this->cash . PHP_EOL;
-            }
-            else
-            {
-                echo "Not enough money" . PHP_EOL;
             }
         } while (true);
     }
@@ -186,7 +185,7 @@ class Person
         return in_array($bet, $multiplierCosts);
     }
 
-    private function enoughMoney(int $bet, array $multiplierCosts): bool
+    private function hasEnoughMoney(int $bet): bool
     {
         return $this->cash >= $bet;
     }
