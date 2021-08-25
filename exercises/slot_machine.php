@@ -191,7 +191,6 @@ class Person
     }
 }
 
-
 $person = new Person();
 $person->depositCash(100);
 $person->playSlotMachine();
