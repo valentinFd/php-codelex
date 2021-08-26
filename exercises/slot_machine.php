@@ -13,7 +13,7 @@ class SlotMachine
 
     // used to determine whether a line consists of the same elements. Each value is a prime number.
     private const ELEMENT_SCORES = [
-        "A" => 1,
+        "A" => 2,
         "B" => 3,
         "C" => 5,
         "D" => 7,
