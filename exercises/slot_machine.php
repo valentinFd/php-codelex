@@ -11,7 +11,7 @@ class SlotMachine
     // slot machine's elements that get randomly chosen.
     private const ELEMENTS = ["A", "B", "C", "D", "E"];
 
-    // used to determine whether a line consists of the same elements. Each element is represented by a prime number.
+    // used to determine whether a line consists of the same element. Each element is represented by a prime number.
     private const ELEMENT_SCORES = [
         "A" => 2,
         "B" => 3,
@@ -20,7 +20,7 @@ class SlotMachine
         "E" => 11,
     ];
 
-    // winning amount for one line consisting of the same element.
+    // winning amounts for one line consisting of the same element.
     private const ELEMENT_WIN_AMOUNTS = [
         "A" => 5,
         "B" => 10,
