@@ -13,11 +13,11 @@ class SlotMachine
 
     // used to determine whether a line consists of the same elements. Each value is a prime number.
     private const ELEMENT_SCORES = [
-        "A" => 2,
+        "A" => 1,
         "B" => 3,
         "C" => 5,
         "D" => 7,
-        "E" => 11
+        "E" => 11,
     ];
 
     // winning amount for one line consisting of the same element.
@@ -26,7 +26,7 @@ class SlotMachine
         "B" => 10,
         "C" => 15,
         "D" => 25,
-        "E" => 50
+        "E" => 50,
     ];
 
     private const WINNING_MULTIPLIERS = [
@@ -82,7 +82,6 @@ class SlotMachine
                 }
             }
         }
-        var_dump($this->scores);
         for ($i = 0; $i < self::ROWS; $i++) // check each row's score.
         {
             // if $score is a perfect power of COLS (number of columns), $i row consists of the same element.
