@@ -77,7 +77,7 @@ class SlotMachine
                         || ($i === 0 && $j > self::COLS - 1 - $k)
                         || ($i === self::ROWS - 1 && $j < self::COLS - self::ROWS - $k))
                     {
-                        // [self::ROWS + self::COLS + self::COLS - self::ROWS + 1 + $k]
+                        // $this->scores[self::ROWS + self::COLS + self::COLS - self::ROWS + 1 + $k]...
                         $this->scores[2 * self::COLS + 1 + $k] *= self::ELEMENT_SCORES[$randomElement];
                     }
                 }
@@ -114,7 +114,8 @@ class SlotMachine
             }
         }
         // check each diagonal's score
-        for ($i = self::ROWS + self::COLS; $i < self::ROWS + self::COLS + 2 + 2 * (self::COLS - self::ROWS); $i++)
+        // ...; $i < self::ROWS + self::COLS + 2 + 2 * (self::COLS - self::ROWS);...
+        for ($i = self::ROWS + self::COLS; $i < 3 * self::COLS - self::ROWS + 2; $i++)
         {
             // if $score is a perfect power of COLS (number of columns), $i diagonal consists of the same element.
             // number of columns is equal to number of elements in one diagonal.
