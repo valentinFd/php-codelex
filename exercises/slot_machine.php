@@ -82,7 +82,8 @@ class SlotMachine
                 }
             }
         }
-        for ($i = 0; $i < self::ROWS; $i++) // check each row's score.
+        // check each row's score.
+        for ($i = 0; $i < self::ROWS; $i++)
         {
             // if $score is a perfect power of COLS (number of columns), $i row consists of the same element.
             // number of columns is equal to number of elements in one row.
@@ -96,7 +97,8 @@ class SlotMachine
                 $this->winnings += (self::ELEMENT_WIN_AMOUNTS[array_search($value, self::ELEMENT_SCORES)]);
             }
         }
-        for ($i = self::ROWS; $i < self::ROWS + self::COLS; $i++) // check each column's score.
+        // check each column's score.
+        for ($i = self::ROWS; $i < self::ROWS + self::COLS; $i++)
         {
             // if $score is a perfect power of ROWS (number of rows), ($i - ROWS) column consists of the same element.
             // number of rows is equal to number of elements in one column.
@@ -110,6 +112,7 @@ class SlotMachine
                 $this->winnings += (self::ELEMENT_WIN_AMOUNTS[array_search($value, self::ELEMENT_SCORES)]);
             }
         }
+        // check each diagonal's score
         for ($i = self::ROWS + self::COLS; $i < self::ROWS + self::COLS + 2 + 2 * (self::COLS - self::ROWS); $i++)
         {
             // if $score is a perfect power of COLS (number of columns), $i diagonal consists of the same element.
