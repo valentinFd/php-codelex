@@ -113,7 +113,7 @@ class SlotMachine
                 $this->winnings += (self::ELEMENT_WIN_AMOUNTS[array_search($value, self::ELEMENT_SCORES)]);
             }
         }
-        // check each diagonal's score
+        // check each diagonal's score.
         // ...; $i < self::ROWS + self::COLS + 2 + 2 * (self::COLS - self::ROWS);...
         for ($i = self::ROWS + self::COLS; $i < 3 * self::COLS - self::ROWS + 2; $i++)
         {
