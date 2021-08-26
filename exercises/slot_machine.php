@@ -77,7 +77,8 @@ class SlotMachine
                         || ($i === 0 && $j > self::COLS - 1 - $k)
                         || ($i === self::ROWS - 1 && $j < self::COLS - self::ROWS - $k))
                     {
-                        $this->scores[self::ROWS + self::COLS + self::COLS - self::ROWS + 1 + $k] *= self::ELEMENT_SCORES[$randomElement];
+                        // [self::ROWS + self::COLS + self::COLS - self::ROWS + 1 + $k]
+                        $this->scores[2 * self::COLS + 1 + $k] *= self::ELEMENT_SCORES[$randomElement];
                     }
                 }
             }
