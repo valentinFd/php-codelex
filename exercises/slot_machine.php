@@ -118,7 +118,7 @@ class SlotMachine
         {
             // if $score is a perfect power of COLS (number of columns), $i diagonal consists of the same element.
             // number of columns is equal to number of elements in one diagonal.
-            // element is determined by calculating pow($score, 1 / COLUMNS), and checking the resulting value's key
+            // element is determined by calculating pow($score, 1 / COLS), and checking the resulting value's key
             // in ELEMENT_SCORES.
             $score = $this->scores[$i];
             $value = pow($score, 1 / self::COLS);
