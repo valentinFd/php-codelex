@@ -17,7 +17,7 @@ class SlotMachine
         "B" => 3,
         "C" => 5,
         "D" => 7,
-        "E" => 11,
+        "E" => 11
     ];
 
     // winning amounts for one line consisting of the same element.
@@ -26,7 +26,7 @@ class SlotMachine
         "B" => 10,
         "C" => 15,
         "D" => 25,
-        "E" => 50,
+        "E" => 50
     ];
 
     private const WINNING_MULTIPLIERS = [
