@@ -67,6 +67,8 @@ class SlotMachine
                 $this->scores[self::ROWS + $j] *= self::ELEMENT_SCORES[$randomElement]; // $j column's score.
                 for ($k = 0; $k <= self::COLS - self::ROWS; $k++)
                 {
+                    // $k is an index of a diagonal that goes either from top left to bottom right or from top right to
+                    // bottom left.
                     // scores of all diagonals that go from top left to bottom right.
                     if ($j - $i === $k || ($i === 0 && $j < $k) || ($i === self::ROWS - 1 && $j > self::ROWS - 1 + $k))
                     {
