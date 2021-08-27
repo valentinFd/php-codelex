@@ -117,8 +117,8 @@ class SlotMachine
         // ...; $i < self::ROWS + self::COLS + 2 + 2 * (self::COLS - self::ROWS);...
         for ($i = self::ROWS + self::COLS; $i < 3 * self::COLS - self::ROWS + 2; $i++)
         {
-            // if $score is a perfect power of COLS (number of columns), $i diagonal consists of the same element.
-            // number of columns is equal to number of elements in one diagonal.
+            // if $score is a perfect power of COLS (number of columns), ($i + 1 - ROWS - COLS) diagonal consists of the same
+            // element. Number of columns is equal to number of elements in one diagonal.
             // element is determined by calculating pow($score, 1 / COLS), and checking the resulting value's key
             // in ELEMENT_SCORES.
             $score = $this->scores[$i];
@@ -224,7 +224,7 @@ class Person
                 }
             } while (!($game->isValidBet($bet) && $this->hasEnoughMoney($bet)));
             $this->withdrawCash($bet);
-            $this->depositCash($game->startGame($bet)); // start the game and deposit the returned amount of money
+            $this->depositCash($game->startGame($bet)); // start the game and deposit the returned amount of money.
         } while (true);
     }
 
