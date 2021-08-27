@@ -63,22 +63,28 @@ class SlotMachine
                 $randomElement = self::ELEMENTS[array_rand(self::ELEMENTS)];
                 $this->slotMachine[$i][] = $randomElement;
 
-                $this->scores[$i] *= self::ELEMENT_SCORES[$randomElement]; // $i row's score.
-                $this->scores[self::ROWS + $j] *= self::ELEMENT_SCORES[$randomElement]; // $j column's score.
+                // multiply $i row's score by a $randomElement's corresponding prime number.
+                $this->scores[$i] *= self::ELEMENT_SCORES[$randomElement];
+                // multiply $j column's score by a $randomElement's corresponding prime number.
+                $this->scores[self::ROWS + $j] *= self::ELEMENT_SCORES[$randomElement];
+                // $k is an index of a diagonal that goes either from top left to bottom right or from top right to
+                // bottom left.
                 for ($k = 0; $k <= self::COLS - self::ROWS; $k++)
                 {
-                    // $k is an index of a diagonal that goes either from top left to bottom right or from top right to
-                    // bottom left.
-                    // score of $k diagonal that goes from top left to bottom right.
+                    // check if $i, $j are coordinates of $k diagonal that goes from top left to bottom right.
                     if ($j - $i === $k || ($i === 0 && $j < $k) || ($i === self::ROWS - 1 && $j > self::ROWS - 1 + $k))
                     {
+                        // multiply score of $k diagonal that goes from top left to bottom right by a $randomElement's
+                        // corresponding prime number.
                         $this->scores[self::ROWS + self::COLS + $k] *= self::ELEMENT_SCORES[$randomElement];
                     }
-                    // score of $k diagonal that goes from top right to bottom left.
+                    // check if $i, $j are coordinates of $k diagonal that goes from top right to bottom left.
                     if ($i === self::COLS - 1 - $j - $k
                         || ($i === 0 && $j > self::COLS - 1 - $k)
                         || ($i === self::ROWS - 1 && $j < self::COLS - self::ROWS - $k))
                     {
+                        // multiply score of $k diagonal that goes from top right to bottom left by a $randomElement's
+                        // corresponding prime number.
                         // $this->scores[self::ROWS + self::COLS + self::COLS - self::ROWS + 1 + $k]...
                         $this->scores[2 * self::COLS + 1 + $k] *= self::ELEMENT_SCORES[$randomElement];
                     }
