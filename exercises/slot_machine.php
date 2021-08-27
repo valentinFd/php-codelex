@@ -69,12 +69,12 @@ class SlotMachine
                 {
                     // $k is an index of a diagonal that goes either from top left to bottom right or from top right to
                     // bottom left.
-                    // scores of all diagonals that go from top left to bottom right.
+                    // score of $k diagonal that goes from top left to bottom right.
                     if ($j - $i === $k || ($i === 0 && $j < $k) || ($i === self::ROWS - 1 && $j > self::ROWS - 1 + $k))
                     {
                         $this->scores[self::ROWS + self::COLS + $k] *= self::ELEMENT_SCORES[$randomElement];
                     }
-                    // scores of all diagonals that go from top right to bottom left.
+                    // score of $k diagonal that goes from top right to bottom left.
                     if ($i === self::COLS - 1 - $j - $k
                         || ($i === 0 && $j > self::COLS - 1 - $k)
                         || ($i === self::ROWS - 1 && $j < self::COLS - self::ROWS - $k))
