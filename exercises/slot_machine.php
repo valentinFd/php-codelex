@@ -71,14 +71,14 @@ class SlotMachine
                 // bottom left.
                 for ($k = 0; $k <= self::COLS - self::ROWS; $k++)
                 {
-                    // check if $i, $j are coordinates of $k diagonal that goes from top left to bottom right.
+                    // check if $i, $j coordinates belong to a $k diagonal that goes from top left to bottom right.
                     if ($j - $i === $k || ($i === 0 && $j < $k) || ($i === self::ROWS - 1 && $j > self::ROWS - 1 + $k))
                     {
                         // multiply score of $k diagonal that goes from top left to bottom right by a $randomElement's
                         // corresponding prime number.
                         $this->scores[self::ROWS + self::COLS + $k] *= self::ELEMENT_SCORES[$randomElement];
                     }
-                    // check if $i, $j are coordinates of $k diagonal that goes from top right to bottom left.
+                    // check if $i, $j coordinates belong to a $k diagonal that goes from top right to bottom left.
                     if ($i === self::COLS - 1 - $j - $k
                         || ($i === 0 && $j > self::COLS - 1 - $k)
                         || ($i === self::ROWS - 1 && $j < self::COLS - self::ROWS - $k))
