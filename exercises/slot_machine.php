@@ -9,7 +9,7 @@ class SlotMachine
     private const COLS = 4;
 
     // slot machine's elements that get randomly chosen.
-    private const ELEMENTS = ["A"];
+    private const ELEMENTS = ["A", "B", "C", "D", "E"];
 
     // used to determine whether a line consists of the same element. Each element's score is a prime number.
     private const ELEMENT_SCORES = [
