@@ -9,7 +9,7 @@ class SlotMachine
     private const COLS = 4;
 
     // slot machine's elements that get randomly chosen.
-    private const ELEMENTS = ["A", "B", "C", "D", "E"];
+    private const ELEMENTS = ["A"];
 
     // used to determine whether a line consists of the same element. Each element's score is a prime number.
     private const ELEMENT_SCORES = [
@@ -52,6 +52,18 @@ class SlotMachine
         // size of array is sum of: number of rows, number of columns and number of diagonals.
         // number of rows is ROWS, number of columns is COLS, number of diagonals is 2 + 2 * (COLS - ROWS).
         $this->scores = array_fill(0, self::ROWS + self::COLS + 2 + 2 * (self::COLS - self::ROWS), 1);
+    }
+
+    private function checkScore(int $i, int $elementsCount)
+    {
+        $score = $this->scores[$i];
+        $value = pow($score, 1 / $elementsCount);
+        if ((string)$value === (string)round($value))
+        {
+            $value = (int)(string)$value;
+            $element = array_search($value, self::ELEMENT_SCORES);
+            $this->winnings += self::ELEMENT_WIN_AMOUNTS[$element];
+        }
     }
 
     private function startSlotMachine(int $amount)
@@ -98,13 +110,7 @@ class SlotMachine
             // number of columns is equal to number of elements in one row.
             // element is determined by calculating pow($score, 1 / COLS), and checking the resulting value's key
             // in ELEMENT_SCORES.
-            $score = $this->scores[$i];
-            $value = pow($score, 1 / self::COLS);
-            if ((string)$value === (string)round($value))
-            {
-                $value = (int)(string)$value;
-                $this->winnings += (self::ELEMENT_WIN_AMOUNTS[array_search($value, self::ELEMENT_SCORES)]);
-            }
+            $this->checkScore($i, self::COLS);
         }
         // check each column's score.
         for ($i = self::ROWS; $i < self::ROWS + self::COLS; $i++)
@@ -113,13 +119,7 @@ class SlotMachine
             // number of rows is equal to number of elements in one column.
             // element is determined by calculating pow($score, 1 / ROWS), and checking the resulting value's key
             // in ELEMENT_SCORES.
-            $score = $this->scores[$i];
-            $value = pow($score, 1 / self::ROWS);
-            if ((string)$value === (string)round($value))
-            {
-                $value = (int)(string)$value;
-                $this->winnings += (self::ELEMENT_WIN_AMOUNTS[array_search($value, self::ELEMENT_SCORES)]);
-            }
+            $this->checkScore($i, self::ROWS);
         }
         // check each diagonal's score.
         // ...; $i < self::ROWS + self::COLS + 2 + 2 * (self::COLS - self::ROWS);...
@@ -129,13 +129,7 @@ class SlotMachine
             // element. Number of columns is equal to number of elements in one diagonal.
             // element is determined by calculating pow($score, 1 / COLS), and checking the resulting value's key
             // in ELEMENT_SCORES.
-            $score = $this->scores[$i];
-            $value = pow($score, 1 / self::COLS);
-            if ((string)$value === (string)round($value))
-            {
-                $value = (int)(string)$value;
-                $this->winnings += (self::ELEMENT_WIN_AMOUNTS[array_search($value, self::ELEMENT_SCORES)]);
-            }
+            $this->checkScore($i, self::COLS);
         }
         $this->winnings *= self::WINNING_MULTIPLIERS[$amount];
     }
