@@ -73,7 +73,7 @@ class SlotMachine
             for ($j = 0; $j < self::COLS; $j++)
             {
                 $randomElement = self::ELEMENTS[array_rand(self::ELEMENTS)];
-                $this->slotMachine[$i][] = $randomElement;
+                $this->slotMachine[$i][$j] = $randomElement;
 
                 // multiply $i row's score by a $randomElement's corresponding prime number.
                 $this->scores[$i] *= self::ELEMENT_SCORES[$randomElement];
