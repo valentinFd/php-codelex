@@ -38,7 +38,7 @@ class SavingsAccount
         return true;
     }
 
-    private function roundBalance()
+    private function roundBalance(): void
     {
         $this->balance = round($this->balance, 2);
     }
@@ -46,7 +46,7 @@ class SavingsAccount
 
 class Test
 {
-    public function main()
+    public function main(): void
     {
         $amount = (float)readline("Enter the amount of money on the account: ");
         $interest = (float)readline("Enter the annual interest rate: ");
