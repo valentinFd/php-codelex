@@ -2,7 +2,7 @@
 
 class Product
 {
-    public string $name;
+    private string $name;
     private float $price;
     private int $amount;
 
