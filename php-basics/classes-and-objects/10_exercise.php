@@ -37,7 +37,7 @@ class Video
         $this->userRatings = [];
     }
 
-    public function addRating(float $rating)
+    public function addRating(float $rating): void
     {
         $this->userRatings[] = $rating;
     }
@@ -48,12 +48,12 @@ class Video
         return number_format(round(array_sum($this->userRatings) / count($this->userRatings), 1), 1);
     }
 
-    public function checkOut()
+    public function checkOut(): void
     {
         $this->checkedOut = true;
     }
 
-    public function returnVideo()
+    public function returnVideo(): void
     {
         $this->checkedOut = false;
     }
@@ -84,7 +84,7 @@ class VideoStore
         $this->inventory = [];
     }
 
-    public function addVideo(string $title)
+    public function addVideo(string $title): void
     {
         $video = new Video($title);
         $this->inventory[] = $video;
@@ -138,7 +138,7 @@ class VideoStore
         return false;
     }
 
-    public function likedPercentage(string $title)
+    public function likedPercentage(string $title): void
     {
         /** @var Video $video */
         foreach ($this->inventory as $video)
@@ -154,7 +154,7 @@ class VideoStore
 
 class VideoStoreTest
 {
-    public function main()
+    public function main(): void
     {
         $videoStore = new VideoStore();
 
