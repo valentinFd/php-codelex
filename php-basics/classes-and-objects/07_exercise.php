@@ -8,7 +8,7 @@ class Dog
 
     private Dog $mother;
 
-    public function setMother(Dog $mother)
+    public function setMother(Dog $mother): void
     {
         $this->mother = $mother;
     }
@@ -21,7 +21,7 @@ class Dog
         return "Unknown";
     }
 
-    public function setFather(Dog $father)
+    public function setFather(Dog $father): void
     {
         $this->father = $father;
     }
