@@ -57,7 +57,7 @@ class Bank
 
 class TestAccount
 {
-    public function firstAccount()
+    public function firstAccount(): void
     {
         echo "--First account--" . PHP_EOL;
 
@@ -66,7 +66,7 @@ class TestAccount
         echo $firstAccount . PHP_EOL;
     }
 
-    public function firstTransfer()
+    public function firstTransfer(): void
     {
         echo "--First transfer--" . PHP_EOL;
 
@@ -78,7 +78,7 @@ class TestAccount
         echo $my . PHP_EOL;
     }
 
-    public function main()
+    public function main(): void
     {
         echo "--Main--" . PHP_EOL;
 
