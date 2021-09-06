@@ -13,17 +13,17 @@ class Product
         $this->amount = $amount;
     }
 
-    public function setPrice(int $price)
+    public function setPrice(int $price): void
     {
         $this->price = $price;
     }
 
-    public function setAmount(int $amount)
+    public function setAmount(int $amount): void
     {
         $this->amount = $amount;
     }
 
-    public function print()
+    public function print(): void
     {
         echo "$this->name, price $this->price, amount $this->amount" . PHP_EOL;
     }
