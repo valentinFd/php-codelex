@@ -14,12 +14,12 @@ class FuelGauge
         return $this->fuel;
     }
 
-    public function incrementFuel()
+    public function incrementFuel(): void
     {
         $this->fuel++;
     }
 
-    public function decrementFuel()
+    public function decrementFuel(): void
     {
         $this->fuel--;
     }
@@ -39,7 +39,7 @@ class Odometer
         return $this->mileage;
     }
 
-    public function incrementMileage()
+    public function incrementMileage(): void
     {
         if ($this->mileage === 999999) $this->mileage = 0;
         else $this->mileage++;
