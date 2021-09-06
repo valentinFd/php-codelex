@@ -20,7 +20,7 @@ class Date
         return $this->month;
     }
 
-    public function setMonth(int $month)
+    public function setMonth(int $month): void
     {
         $this->month = $month;
     }
@@ -30,7 +30,7 @@ class Date
         return $this->day;
     }
 
-    public function setDay(int $day)
+    public function setDay(int $day): void
     {
         $this->day = $day;
     }
@@ -40,12 +40,12 @@ class Date
         return $this->year;
     }
 
-    public function setYear(int $year)
+    public function setYear(int $year): void
     {
         $this->year = $year;
     }
 
-    public function displayDate()
+    public function displayDate(): void
     {
         echo "$this->month/$this->day/$this->year";
     }
@@ -53,7 +53,7 @@ class Date
 
 class DateTest
 {
-    public function main()
+    public function main(): void
     {
         $date = new Date(8, 17, 2021);
         echo $date->displayDate() . PHP_EOL;
@@ -71,5 +71,5 @@ class DateTest
     }
 }
 
-$test=new DateTest();
+$test = new DateTest();
 $test->main();
