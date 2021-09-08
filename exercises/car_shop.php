@@ -59,17 +59,24 @@ class CarShop
                 break;
             }
         }
-        $carPrice = $foundItem->getPrice();
-        if ($cash >= $carPrice)
+        if ($foundItem)
         {
-            $cash -= $carPrice;
-            echo "Successfully bought a car with \"{$foundItem->getCar()->getCarPlate()}\" car plate for $$carPrice" . PHP_EOL;
-            array_splice($this->items, array_search($foundItem, $this->items), 1);
+            $carPrice = $foundItem->getPrice();
+            if ($cash >= $carPrice)
+            {
+                $cash -= $carPrice;
+                echo "Successfully bought a car with \"{$foundItem->getCar()->getCarPlate()}\" car plate for $$carPrice" . PHP_EOL;
+                array_splice($this->items, array_search($foundItem, $this->items), 1);
+            }
+            else
+            {
+                echo "Failed to buy a car with \"{$foundItem->getCar()->getCarPlate()}\" car plate for $$carPrice" . PHP_EOL;
+                echo "Not enough money" . PHP_EOL;
+            }
         }
         else
         {
-            echo "Failed to buy a car with \"{$foundItem->getCar()->getCarPlate()}\" car plate for $$carPrice" . PHP_EOL;
-            echo "Not enough money" . PHP_EOL;
+            echo "Failed to find a car with \"$carPlate\" car plate" . PHP_EOL;
         }
     }
 }
