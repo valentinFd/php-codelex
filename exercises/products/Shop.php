@@ -15,7 +15,7 @@ class Shop
         if (($file = fopen("products.csv", "r")) !== false)
         {
             fgetcsv($file, 1000); // read header
-            while (($row = fgetcsv($file, 1000, ";")) !== false)
+            while (($row = fgetcsv($file, 1000, )) !== false)
             {
                 $this->products[] = new Product($row[0], (int)$row[1]);
             }
@@ -32,10 +32,10 @@ class Shop
     private function save(): void
     {
         $file = fopen("products.csv", "w");
-        fputcsv($file, Product::getPropertyNames(), ";"); // write header
+        fputcsv($file, Product::getPropertyNames(), ); // write header
         foreach ($this->products as $product)
         {
-            fputcsv($file, (array)$product, ";");
+            fputcsv($file, (array)$product, );
         }
         fclose($file);
     }
