@@ -42,6 +42,11 @@ class Shop
 
     public function printProducts(): void
     {
+        foreach (Product::getPropertyNames() as $propertyName)
+        {
+            echo "$propertyName ";
+        }
+        echo PHP_EOL;
         foreach ($this->products as $product)
         {
             echo $product . PHP_EOL;
