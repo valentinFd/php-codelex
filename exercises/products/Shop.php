@@ -11,9 +11,9 @@ class Shop
 
     private function load(): void
     {
-        $this->products = [];
         if (($file = fopen("products.csv", "r")) !== false)
         {
+            $this->products = [];
             fgetcsv($file, 1000); // read header
             while (($row = fgetcsv($file, 1000)) !== false)
             {
