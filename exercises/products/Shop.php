@@ -1,7 +1,5 @@
 <?php
 
-require_once("Product.php");
-
 class Shop
 {
     private array $products;
