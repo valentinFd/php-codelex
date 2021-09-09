@@ -17,7 +17,7 @@ class Shop
             fgetcsv($file, 1000); // read header
             while (($row = fgetcsv($file, 1000)) !== false)
             {
-                $this->products[] = new Product($row[0], $row[1]);
+                $this->products[] = new Product($row[0], (int)$row[1]);
             }
             fclose($file);
         }
