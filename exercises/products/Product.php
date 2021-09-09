@@ -14,7 +14,12 @@ class Product
 
     public function __toString(): string
     {
-        return "$this->name, $this->amount";
+        $result = "";
+        foreach (get_object_vars($this) as $objectVar)
+        {
+            $result .= "$objectVar ";
+        }
+        return $result;
     }
 
     public static function getPropertyNames(): array
