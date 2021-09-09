@@ -31,15 +31,13 @@ class Shop
 
     private function save(): void
     {
-        if (($file = fopen("products.csv", "w")) !== false)
+        $file = fopen("products.csv", "w");
+        fputcsv($file, Product::getPropertyNames()); // write header
+        foreach ($this->products as $product)
         {
-            fputcsv($file, Product::getPropertyNames()); // write header
-            foreach ($this->products as $product)
-            {
-                fputcsv($file, (array)$product);
-            }
-            fclose($file);
+            fputcsv($file, (array)$product);
         }
+        fclose($file);
     }
 
     public function printProducts(): void
