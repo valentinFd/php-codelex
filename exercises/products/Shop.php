@@ -23,9 +23,10 @@ class Shop
         }
     }
 
-    public function addProduct(Product $product): void
+    public function addProduct(string $name, string $amount): void
     {
-        $this->products[] = $product;
+        $amount = (int)$amount > 0 ? (int)$amount : 0;
+        $this->products[] = new Product($name, $amount);
         $this->save();
     }
 
