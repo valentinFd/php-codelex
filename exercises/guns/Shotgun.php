@@ -5,7 +5,8 @@ class Shotgun extends Gun
 {
     public function __construct(string $name, string $license)
     {
-        parent::__construct($name, $license);
+        parent::__construct($name);
+        $this->licenses[] = $license;
     }
 
     public function getTrajectory(): int
