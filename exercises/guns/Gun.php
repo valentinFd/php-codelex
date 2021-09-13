@@ -7,11 +7,10 @@ class Gun
 
     protected array $licenses;
 
-    protected function __construct(string $name, string $license)
+    protected function __construct(string $name)
     {
         $this->name = $name;
         $this->licenses[] = "Z";
-        $this->licenses[] = $license;
     }
 
     protected function getTrajectory(): int
