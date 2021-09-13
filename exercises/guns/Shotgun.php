@@ -3,10 +3,10 @@ declare(strict_types = 1);
 
 class Shotgun extends Gun
 {
-    public function __construct(string $name, string $license)
+    public function __construct(string $name)
     {
         parent::__construct($name);
-        $this->licenses[] = $license;
+        $this->licenses[] = "A";
     }
 
     public function getTrajectory(): int
