@@ -41,7 +41,7 @@ class CovidTable
             $getProperty = "get" . $column;
             foreach ($this->data as $row)
             {
-                if ($input === $row->$getProperty())
+                if (strtoupper($input) === strtoupper($row->$getProperty()))
                 {
                     $searchResults[] = $row;
                 }
