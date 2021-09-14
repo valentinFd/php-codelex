@@ -7,5 +7,5 @@ require_once("CovidTable.php");
 
 $table = new CovidTable();
 $table->load();
-$table->print();
+$table->print($table->getData());
 $table->print($table->search("Latvija", "Valsts"));
