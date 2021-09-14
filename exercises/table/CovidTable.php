@@ -60,9 +60,9 @@ class CovidTable
         }
         foreach ($data as $row)
         {
-            $table->addRow();
             if (is_a($row, "CountryCovidDataRow"))
             {
+                $table->addRow();
                 foreach ((array)$row as $element)
                 {
                     $element = strlen($element) > 18 ? substr($element, 0, 16) . ".." : $element;
