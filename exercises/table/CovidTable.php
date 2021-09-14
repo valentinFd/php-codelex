@@ -9,6 +9,11 @@ class CovidTable
 
     private array $data;
 
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
     public function __construct()
     {
         $this->data = [];
@@ -45,12 +50,8 @@ class CovidTable
         return $searchResults;
     }
 
-    public function print(array $data = [-1]): void
+    public function print(array $data): void
     {
-        if (isset($data[0]) && $data[0] === -1 && count($data) === 1)
-        {
-            $data = $this->data;
-        }
         $table = new ConsoleTable();
         foreach (CountryCovidDataRow::getPropertyNames() as $propertyName)
         {
