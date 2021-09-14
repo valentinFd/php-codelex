@@ -6,5 +6,6 @@ require_once("CountryCovidDataRow.php");
 require_once("Table.php");
 
 $table = new Table();
+$table->load();
 $table->print();
 $table->print($table->search("Latvija", "Valsts"));
