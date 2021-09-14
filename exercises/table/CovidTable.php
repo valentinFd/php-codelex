@@ -47,7 +47,7 @@ class CovidTable
 
     public function print(array $data = [-1]): void
     {
-        if (isset($data[0]) && $data[0] === -1)
+        if (isset($data[0]) && $data[0] === -1 && count($data) === 1)
         {
             $data = $this->data;
         }
@@ -60,10 +60,13 @@ class CovidTable
         foreach ($data as $row)
         {
             $table->addRow();
-            foreach ((array)$row as $element)
+            if (is_a($row, "CountryCovidDataRow"))
             {
-                $element = strlen($element) > 18 ? substr($element, 0, 16) . ".." : $element;
-                $table->addColumn($element);
+                foreach ((array)$row as $element)
+                {
+                    $element = strlen($element) > 18 ? substr($element, 0, 16) . ".." : $element;
+                    $table->addColumn($element);
+                }
             }
         }
         $table->display();
