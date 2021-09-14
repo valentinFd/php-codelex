@@ -11,10 +11,10 @@ class Table
 
     public function __construct()
     {
-        $this->load();
+        $this->data = [];
     }
 
-    private function load(): void
+    public function load(): void
     {
         if (($file = fopen(self::FILE, "r")) !== false)
         {
