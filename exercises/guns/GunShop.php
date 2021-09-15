@@ -15,17 +15,13 @@ class GunShop
         $this->guns[] = $gun;
     }
 
-    public function buyGun(string $name, string $paymentMethod, Customer $customer): void
+    public function buyGun(Gun $gun, PaymentMethod $paymentMethod): void
     {
-        if (($gun = $this->searchByName($name)) !== null && $this->isValidPaymentMethod($paymentMethod))
-        {
-            $getPayMethod = "get" . $paymentMethod;
-            $customer->$getPayMethod()->withdraw($gun->getPrice());
-            array_splice($this->guns, array_search($gun, $this->guns), 1);
-        }
+        array_splice($this->guns, array_search($gun, $this->guns), 1);
+        $paymentMethod->withdraw($gun->getPrice());
     }
 
-    private function searchByName(string $name): ?Gun
+    public function searchByName(string $name): ?Gun
     {
         /** @var Gun $gun */
         foreach ($this->guns as $gun)
@@ -36,11 +32,6 @@ class GunShop
             }
         }
         return null;
-    }
-
-    private function isValidPaymentMethod(string $paymentMethod): bool
-    {
-        return $paymentMethod === "Wallet" || $paymentMethod === "PayPal" || $paymentMethod === "Bank";
     }
 
     public function printGuns(): void
