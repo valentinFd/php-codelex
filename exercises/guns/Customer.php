@@ -36,6 +36,6 @@ class Customer
         $walletDollars = round(($this->wallet->getMoney() / 100), 2);
         $payPalDollars = round(($this->payPal->getMoney() / 100), 2);
         $bankDollars = round(($this->bank->getMoney() / 100), 2);
-        echo "Wallet: $$walletDollars | PayPal: $$payPalDollars | Bank: $$bankDollars";
+        echo "Wallet: $$walletDollars | PayPal: $$payPalDollars | Bank: $$bankDollars" . PHP_EOL;
     }
 }
