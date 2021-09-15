@@ -3,22 +3,15 @@ declare(strict_types = 1);
 
 class PayPal extends PaymentMethod
 {
-    private int $money;
-
-    public function getMoney(): int
-    {
-        return $this->money;
-    }
-
     private string $email;
 
     private string $password;
 
     private bool $loggedIn;
 
-    public function createAccount(int $money, string $email, string $password): void
+    public function __construct(int $money, string $email, string $password)
     {
-        $this->money = $money;
+        parent::__construct($money);
         $this->email = $email;
         $this->password = $password;
         $this->loggedIn = false;
