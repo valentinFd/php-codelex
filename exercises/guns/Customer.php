@@ -27,8 +27,7 @@ class Customer
     public function __construct(int $walletMoney, int $paypalMoney, string $email, string $password, int $bankMoney)
     {
         $this->wallet = new Wallet($walletMoney);
-        $this->payPal = new PayPal();
-        $this->payPal->createAccount($paypalMoney, $email, $password);
+        $this->payPal = new Paypal($paypalMoney, $email, $password);
         $this->bank = new Bank($bankMoney);
     }
 
