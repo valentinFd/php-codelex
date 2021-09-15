@@ -13,18 +13,20 @@ require_once("Customer.php");
 
 $shop = new GunShop();
 
-$shotgun = new Shotgun("M58B", 2000);
-$shotgun2 = new Shotgun("CM350M", 2000);
-$sniper = new SniperRifle("SW-04J", 2000);
-
-$shop->addGun($shotgun);
-$shop->addGun($shotgun2);
-$shop->addGun($sniper);
+$shop->addGun(new Shotgun("M58B", 2000));
+$shop->addGun(new Shotgun("CM350M", 2000));
+$shop->addGun(new SniperRifle("SW-04J", 2000));
 $shop->printGuns();
 
-$customer = new Customer(10000, 10000, "john@gmail.com", "asd", 10000);
+$customer = new Customer(10000, 10000, 10000);
 echo $customer->printMoney() . PHP_EOL;
-$shop->buyGun("M58B", "Wallet", $customer);
-$shop->buyGun("CM350M", "PayPal", $customer);
-$shop->buyGun("SW-04J", "Bank", $customer);
+
+$gun1 = $shop->searchByName("M58B");
+$gun2 = $shop->searchByName("CM350M");
+$gun3 = $shop->searchByName("SW-04J");
+
+$shop->buyGun($gun1, $customer->getWallet());
+$shop->buyGun($gun2, $customer->getPayPal());
+$shop->buyGun($gun3, $customer->getBank());
+
 echo $customer->printMoney() . PHP_EOL;
