@@ -3,16 +3,9 @@ declare(strict_types = 1);
 
 class Bank extends PaymentMethod
 {
-    private int $money;
-
-    public function getMoney(): int
-    {
-        return $this->money;
-    }
-
     public function __construct(int $money)
     {
-        $this->money = $money;
+        parent::__construct($money);
     }
 
     public function withdraw(int $amount): void
