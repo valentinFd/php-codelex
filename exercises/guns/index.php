@@ -22,7 +22,7 @@ $customer = new Customer(10000, 10000, 10000);
 $customer->printMoney();
 
 $name = readline("Enter gun name: ");
-$gun1 = $shop->searchByName($name);
+$gun = $shop->searchByName($name);
 $getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
 $shop->buyGun($gun1, $customer->$getPaymentMethod());
 echo PHP_EOL;
@@ -30,7 +30,7 @@ $shop->printGuns();
 $customer->printMoney();
 
 $name = readline("Enter gun name: ");
-$gun2 = $shop->searchByName($name);
+$gun = $shop->searchByName($name);
 $getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
 $shop->buyGun($gun2, $customer->$getPaymentMethod());
 echo PHP_EOL;
@@ -38,7 +38,7 @@ $shop->printGuns();
 $customer->printMoney();
 
 $name = readline("Enter gun name: ");
-$gun3 = $shop->searchByName($name);
+$gun = $shop->searchByName($name);
 $getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
 $shop->buyGun($gun3, $customer->$getPaymentMethod());
 echo PHP_EOL;
