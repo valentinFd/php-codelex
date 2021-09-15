@@ -21,26 +21,13 @@ $shop->printGuns();
 $customer = new Customer(10000, 10000, 10000);
 $customer->printMoney();
 
-$name = readline("Enter gun name: ");
-$gun = $shop->searchByName($name);
-$getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
-$shop->buyGun($gun1, $customer->$getPaymentMethod());
-echo PHP_EOL;
-$shop->printGuns();
-$customer->printMoney();
-
-$name = readline("Enter gun name: ");
-$gun = $shop->searchByName($name);
-$getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
-$shop->buyGun($gun2, $customer->$getPaymentMethod());
-echo PHP_EOL;
-$shop->printGuns();
-$customer->printMoney();
-
-$name = readline("Enter gun name: ");
-$gun = $shop->searchByName($name);
-$getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
-$shop->buyGun($gun3, $customer->$getPaymentMethod());
-echo PHP_EOL;
-$shop->printGuns();
-$customer->printMoney();
+for ($i = 0; $i < 3; $i++)
+{
+    $name = readline("Enter gun name: ");
+    $gun = $shop->searchByName($name);
+    $getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
+    $shop->buyGun($gun, $customer->$getPaymentMethod());
+    echo PHP_EOL;
+    $shop->printGuns();
+    $customer->printMoney();
+}
