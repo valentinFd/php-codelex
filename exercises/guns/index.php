@@ -16,9 +16,10 @@ $shop = new GunShop();
 $shop->addGun(new Shotgun("M58B", 1000));
 $shop->addGun(new Shotgun("CM350M", 3000));
 $shop->addGun(new SniperRifle("SW-04J", 6000));
-$shop->printGuns();
 
 $customer = new Customer(10000, 10000, 10000);
+
+$shop->printGuns();
 $customer->printMoney();
 
 for ($i = 0; $i < 3; $i++)
