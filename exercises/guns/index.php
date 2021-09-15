@@ -26,8 +26,10 @@ for ($i = 0; $i < 3; $i++)
 {
     $name = readline("Enter gun name: ");
     $gun = $shop->searchByName($name);
+
     $getPaymentMethod = "get" . readline("Enter payment method (Wallet/PayPal/Bank): ");
     $shop->buyGun($gun, $customer->$getPaymentMethod());
+
     echo PHP_EOL;
     $shop->printGuns();
     $customer->printMoney();
