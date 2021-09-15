@@ -3,9 +3,9 @@ declare(strict_types = 1);
 
 class SniperRifle extends Gun
 {
-    public function __construct(string $name)
+    public function __construct(string $name, int $price)
     {
-        parent::__construct($name);
+        parent::__construct($name, $price);
         $this->licenses[] = "B";
     }
 
@@ -21,6 +21,7 @@ class SniperRifle extends Gun
         {
             $licenses .= "$license ";
         }
-        return "$this->name | $licenses | {$this->getTrajectory()}";
+        $priceInDollars = round(($this->price / 100), 2);
+        return "$this->name | $$priceInDollars | $licenses | {$this->getTrajectory()}";
     }
 }
