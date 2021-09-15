@@ -19,7 +19,7 @@ $shop->addGun(new SniperRifle("SW-04J", 2000));
 $shop->printGuns();
 
 $customer = new Customer(10000, 10000, 10000);
-echo $customer->printMoney() . PHP_EOL;
+$customer->printMoney() . PHP_EOL;
 
 $gun1 = $shop->searchByName("M58B");
 $gun2 = $shop->searchByName("CM350M");
@@ -29,4 +29,4 @@ $shop->buyGun($gun1, $customer->getWallet());
 $shop->buyGun($gun2, $customer->getPayPal());
 $shop->buyGun($gun3, $customer->getBank());
 
-echo $customer->printMoney() . PHP_EOL;
+$customer->printMoney() . PHP_EOL;
