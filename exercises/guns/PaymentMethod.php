@@ -15,5 +15,5 @@ abstract class PaymentMethod
         $this->money = $money;
     }
 
-    abstract function withdraw(int $amount): void;
+    abstract public function withdraw(int $amount): void;
 }
