@@ -24,10 +24,10 @@ class Customer
         return $this->bank;
     }
 
-    public function __construct(int $walletMoney, int $paypalMoney, string $email, string $password, int $bankMoney)
+    public function __construct(int $walletMoney, int $paypalMoney, int $bankMoney)
     {
         $this->wallet = new Wallet($walletMoney);
-        $this->payPal = new Paypal($paypalMoney, $email, $password);
+        $this->payPal = new Paypal($paypalMoney, "john@gmail.com", "asd");
         $this->bank = new Bank($bankMoney);
     }
 
