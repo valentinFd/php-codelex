@@ -1,6 +1,6 @@
 <?php
 
-abstract class Animal implements IAnimal
+abstract class Animal
 {
     protected string $name;
 
