@@ -1,6 +1,6 @@
 <?php
 
-interface IFreeRoamAnimal extends IAnimal
+interface IFreeRoamAnimal
 {
 
 }
