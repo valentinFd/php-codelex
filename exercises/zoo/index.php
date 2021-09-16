@@ -1,19 +1,19 @@
 <?php
 
-require_once("IAnimal.php");
-require_once("ICagedAnimal.php");
-require_once("IFreeRoamAnimal.php");
-require_once("ICagedFreeRoamAnimal.php");
-require_once("Animal.php");
-require_once("CagedAnimal.php");
-require_once("FreeRoamAnimal.php");
-require_once("CagedFreeRoamAnimal.php");
-require_once("Enclosure.php");
-require_once("Cage.php");
-require_once("FreeRoam.php");
-require_once("Monkey.php");
-require_once("Giraffe.php");
-require_once("Rabbit.php");
+require_once("Animals/IAnimal.php");
+require_once("Animals/ICagedAnimal.php");
+require_once("Animals/IFreeRoamAnimal.php");
+require_once("Animals/ICagedFreeRoamAnimal.php");
+require_once("Animals/Animal.php");
+require_once("Animals/CagedAnimal.php");
+require_once("Animals/FreeRoamAnimal.php");
+require_once("Animals/CagedFreeRoamAnimal.php");
+require_once("Animals/Monkey.php");
+require_once("Animals/Giraffe.php");
+require_once("Animals/Rabbit.php");
+require_once("Enclosures/Enclosure.php");
+require_once("Enclosures/Cage.php");
+require_once("Enclosures/FreeRoam.php");
 
 $cage = new Cage();
 $cage->addAnimal(new Rabbit("Rabbit"));
