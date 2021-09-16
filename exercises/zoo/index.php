@@ -18,7 +18,7 @@ require_once("Rabbit.php");
 $cage = new Cage();
 $cage->addAnimal(new Rabbit("Rabbit"));
 $cage->addAnimal(new Monkey("Monkey"));
-echo "Animals in cage: " . PHP_EOL;
+echo "Animals in cage:" . PHP_EOL;
 foreach ($cage->getAnimals() as $animal)
 {
     echo $animal->getName() . PHP_EOL;
@@ -27,7 +27,7 @@ foreach ($cage->getAnimals() as $animal)
 $freeRoam = new FreeRoam();
 $freeRoam->addAnimal(new Rabbit("Rabbit"));
 $freeRoam->addAnimal(new Giraffe("Giraffe"));
-echo "Animals in free roam: " . PHP_EOL;
+echo "Animals in free roam:" . PHP_EOL;
 foreach ($freeRoam->getAnimals() as $animal)
 {
     echo $animal->getName() . PHP_EOL;
