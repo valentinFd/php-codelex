@@ -1,6 +1,6 @@
 <?php
 
-interface ICagedAnimal extends IAnimal
+interface ICagedAnimal
 {
 
 }
