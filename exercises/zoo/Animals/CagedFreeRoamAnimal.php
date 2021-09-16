@@ -1,6 +1,6 @@
 <?php
 
-abstract class CagedFreeRoamAnimal extends Animal implements ICagedFreeRoamAnimal
+abstract class CagedFreeRoamAnimal extends Animal implements ICagedAnimal, IFreeRoamAnimal
 {
 
 }
