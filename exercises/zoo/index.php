@@ -15,6 +15,7 @@ $freeRoam2 = UI::createEnclosure("FreeRoam");
 
 UI::toCage($monkey, $cage);
 UI::toCage($rabbit, $cage2);
+
 UI::toFreeRoam($giraffe, $freeRoam);
 UI::toFreeRoam($rabbit2, $freeRoam2);
 
@@ -25,3 +26,6 @@ UI::printFreeRoam($freeRoam2);
 
 $cage3 = UI::createEnclosure("Cage");
 UI::printCage($cage3);
+
+$rabbit3 = UI::createAnimal("Rabbit");
+UI::toCage($rabbit3, $cage2);
