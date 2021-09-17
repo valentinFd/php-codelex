@@ -43,14 +43,20 @@ class UI
         }
     }
 
-    public static function toCage(ICagedAnimal $animal, Cage $cage)
+    public static function toCage(ICagedAnimal &$animal, Cage $cage): void
     {
-        $cage->addAnimal($animal);
+        if (!$cage->addAnimal($animal))
+        {
+            echo "Enclosure is not empty" . PHP_EOL;
+        }
     }
 
-    public static function toFreeRoam(IFreeRoamAnimal $animal, FreeRoam $freeRoam)
+    public static function toFreeRoam(IFreeRoamAnimal &$animal, FreeRoam $freeRoam): void
     {
-        $freeRoam->addAnimal($animal);
+        if (!$freeRoam->addAnimal($animal))
+        {
+            echo "Enclosure is not empty" . PHP_EOL;
+        }
     }
 
     public static function printCage(Cage $cage): void
