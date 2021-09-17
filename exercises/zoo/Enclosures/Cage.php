@@ -14,8 +14,19 @@ class Cage
         $this->animal = null;
     }
 
-    public function addAnimal(ICagedAnimal $animal): void
+    public function addAnimal(ICagedAnimal &$animal): bool
     {
-        $this->animal = $animal;
+        if ($this->isEmpty())
+        {
+            $this->animal = $animal;
+            $animal = null;
+            return true;
+        }
+        return false;
+    }
+
+    private function isEmpty(): bool
+    {
+        return $this->animal === null;
     }
 }
