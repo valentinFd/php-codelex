@@ -1,32 +1,27 @@
 <?php
 
-require_once("Animals/ICagedAnimal.php");
-require_once("Animals/IFreeRoamAnimal.php");
-require_once("Animals/Animal.php");
-require_once("Animals/CagedAnimal.php");
-require_once("Animals/FreeRoamAnimal.php");
-require_once("Animals/CagedFreeRoamAnimal.php");
-require_once("Animals/Monkey.php");
-require_once("Animals/Giraffe.php");
-require_once("Animals/Rabbit.php");
-require_once("Enclosures/Enclosure.php");
-require_once("Enclosures/Cage.php");
-require_once("Enclosures/FreeRoam.php");
+require_once("UI.php");
 
-$cage = new Cage();
-$cage->addAnimal(new Rabbit("Rabbit"));
-$cage->addAnimal(new Monkey("Monkey"));
-echo "Animals in cage:" . PHP_EOL;
-foreach ($cage->getAnimals() as $animal)
-{
-    echo $animal->getName() . PHP_EOL;
-}
+$monkey = UI::createAnimal("Monkey");
+$giraffe = UI::createAnimal("Giraffe");
+$rabbit = UI::createAnimal("Rabbit");
+$rabbit2 = UI::createAnimal("Rabbit");
 
-$freeRoam = new FreeRoam();
-$freeRoam->addAnimal(new Rabbit("Rabbit"));
-$freeRoam->addAnimal(new Giraffe("Giraffe"));
-echo "Animals in free roam:" . PHP_EOL;
-foreach ($freeRoam->getAnimals() as $animal)
-{
-    echo $animal->getName() . PHP_EOL;
-}
+$cage = UI::createEnclosure("Cage");
+$cage2 = UI::createEnclosure("Cage");
+
+$freeRoam = UI::createEnclosure("FreeRoam");
+$freeRoam2 = UI::createEnclosure("FreeRoam");
+
+UI::toCage($monkey, $cage);
+UI::toCage($rabbit, $cage2);
+UI::toFreeRoam($giraffe, $freeRoam);
+UI::toFreeRoam($rabbit2, $freeRoam2);
+
+UI::printCage($cage);
+UI::printCage($cage2);
+UI::printFreeRoam($freeRoam);
+UI::printFreeRoam($freeRoam2);
+
+$cage3 = UI::createEnclosure("Cage");
+UI::printCage($cage3);
