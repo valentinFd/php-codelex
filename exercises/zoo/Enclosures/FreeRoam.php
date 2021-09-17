@@ -14,8 +14,19 @@ class FreeRoam
         $this->animal = null;
     }
 
-    public function addAnimal(IFreeRoamAnimal $animal): void
+    public function addAnimal(IFreeRoamAnimal &$animal): bool
     {
-        $this->animal = $animal;
+        if ($this->isEmpty())
+        {
+            $this->animal = $animal;
+            $animal = null;
+            return true;
+        }
+        return false;
+    }
+
+    private function isEmpty(): bool
+    {
+        return $this->animal === null;
     }
 }
