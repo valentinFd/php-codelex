@@ -1,6 +1,6 @@
 <?php
 
-class Rabbit extends CagedFreeRoamAnimal
+class Rabbit extends Animal implements ICagedAnimal, IFreeRoamAnimal
 {
 
 }
