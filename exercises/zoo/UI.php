@@ -3,10 +3,6 @@
 require_once("Animals/ICagedAnimal.php");
 require_once("Animals/IFreeRoamAnimal.php");
 require_once("Animals/Animal.php");
-require_once("Animals/CagedAnimal.php");
-require_once("Animals/FreeRoamAnimal.php");
-require_once("Animals/CagedFreeRoamAnimal.php");
-require_once("Animals/AllTypeAnimal.php");
 require_once("Animals/Monkey.php");
 require_once("Animals/Giraffe.php");
 require_once("Animals/Rabbit.php");
