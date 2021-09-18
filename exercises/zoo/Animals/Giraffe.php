@@ -1,6 +1,6 @@
 <?php
 
-class Giraffe extends FreeRoamAnimal
+class Giraffe extends Animal implements IFreeRoamAnimal
 {
 
 }
