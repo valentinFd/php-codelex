@@ -1,6 +1,6 @@
 <?php
 
-class Monkey extends CagedAnimal
+class Monkey extends Animal implements ICagedAnimal
 {
 
 }
