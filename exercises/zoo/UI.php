@@ -57,7 +57,7 @@ class UI
 
     public static function printCage(Cage $cage): void
     {
-        if ($cage->getAnimal() != null)
+        if ($cage->getAnimal() !== null)
         {
             echo $cage->getAnimal()->getName() . PHP_EOL;
         }
